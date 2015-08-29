@@ -1,17 +1,25 @@
 package com.joeymejias.hangman;
 
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class Hangman extends ActionBarActivity {
+public class Hangman extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*if (args.length == 0) {
+            System.out.println("Please enter a word");
+            System.exit(0);
+        }*/
+
+        Prompter prompter = new Prompter(this);
+        prompter.play();
     }
 
     @Override
@@ -36,13 +44,7 @@ public class Hangman extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-        public static void main(String[] args) {
-            if (args.length == 0) {
-                System.out.println("Please enter a word");
-                System.exit(0);
-            }
-            Game game = new Game(args[0].toLowerCase());
-            Prompter prompter = new Prompter(game);
-            prompter.play();
-        }
+    public static void main(String[] args) {
+
+    }
 }
